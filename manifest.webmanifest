@@ -1,0 +1,9 @@
+{
+  "name": "The Office — Episode Files",
+  "short_name": "Episode Files",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4efe5",
+  "theme_color": "#245947",
+  "icons": [{"src":"favicon.svg","sizes":"any","type":"image/svg+xml"}]
+}
