@@ -47,13 +47,21 @@ function renderCard(ep) {
   img.src = ep.image;
   img.alt = `Scene from “${ep.title}”`;
   img.addEventListener('error', () => { img.closest('.card-image-wrap').classList.add('image-missing'); img.remove(); }, {once:true});
-  card.querySelector('.episode-number').textContent = `EPISODE ${String(ep.absolute).padStart(3,'0')}`;
+  card.querySelector('.episode-number').textContent = `EPISODE ${ep.absolute}`;
   card.querySelector('.episode-code').textContent = `S${String(ep.season).padStart(2,'0')} · E${String(ep.episode).padStart(2,'0')}`;
   card.querySelector('.rating span').textContent = ep.rating.toFixed(1);
   const title = card.querySelector('.episode-title');
   title.textContent = ep.title; title.href = ep.peacock; title.title = `Search Peacock for ${ep.title}`;
   card.querySelector('.air-date').textContent = dateFormat.format(new Date(`${ep.airDate}T12:00:00`));
-  card.querySelector('.summary').textContent = ep.summary || 'Episode summary is unavailable.';
+  const summary = card.querySelector('.summary');
+  summary.textContent = ep.summary || 'Episode summary is unavailable.';
+  const summaryToggle = card.querySelector('.summary-toggle');
+  summaryToggle.addEventListener('click', () => {
+    const expanded = summaryToggle.getAttribute('aria-expanded') === 'true';
+    summaryToggle.setAttribute('aria-expanded', String(!expanded));
+    summaryToggle.textContent = expanded ? 'Read full summary' : 'Show less';
+    summary.classList.toggle('expanded', !expanded);
+  });
   const characters = card.querySelector('.characters');
   ep.characters.slice(0, 5).forEach(name => characters.insertAdjacentHTML('beforeend', `<span>${escapeHtml(name)}</span>`));
   if (ep.characters.length > 5) characters.insertAdjacentHTML('beforeend', `<span>+${ep.characters.length - 5}</span>`);
@@ -74,6 +82,7 @@ function render() {
   const filtered = filteredEpisodes();
   const shown = filtered.slice(0, state.visible);
   els.grid.replaceChildren(...shown.map(renderCard));
+  requestAnimationFrame(syncSummaryControls);
   els.summary.textContent = `${filtered.length} ${filtered.length === 1 ? 'episode' : 'episodes'} found`;
   els.empty.hidden = filtered.length > 0;
   els.loadMore.hidden = shown.length >= filtered.length;
@@ -81,6 +90,16 @@ function render() {
   els.favoritesToggle.setAttribute('aria-pressed', state.favoritesOnly);
   els.favoritesToggle.classList.toggle('active', state.favoritesOnly);
   renderActiveFilters();
+}
+
+function syncSummaryControls() {
+  els.grid.querySelectorAll('.episode-card').forEach(card => {
+    const summary = card.querySelector('.summary');
+    const toggle = card.querySelector('.summary-toggle');
+    if (summary.classList.contains('expanded')) return;
+    const clipped = summary.scrollHeight > summary.clientHeight + 1;
+    toggle.hidden = !clipped;
+  });
 }
 
 function renderActiveFilters() {
@@ -127,6 +146,11 @@ function wireEvents() {
   });
   document.addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); els.search.focus(); } });
   els.theme.addEventListener('click', toggleTheme);
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(syncSummaryControls, 120);
+  });
 }
 
 function setJoke(joke) {
