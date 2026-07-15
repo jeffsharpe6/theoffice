@@ -1,4 +1,4 @@
-# The Office — Episode Files
+# The Office — Episode Guide
 
 A fast, responsive, static browser for all 201 episodes of the U.S. television series *The Office*. It is built with plain HTML, CSS, and JavaScript and needs no server or build step.
 
