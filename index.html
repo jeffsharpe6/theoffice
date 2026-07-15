@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4efe5">
   <meta name="description" content="Browse all 201 episodes of The Office by season, rating, character, and running joke.">
-  <title>The Office — Episode Files</title>
+  <title>The Office — Episode Guide</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preconnect" href="https://static.tvmaze.com">
@@ -14,9 +14,9 @@
 <body>
   <a class="skip-link" href="#episode-grid">Skip to episodes</a>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Episode Files home">
+    <a class="brand" href="#top" aria-label="Episode Guide home">
       <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span><b>THE OFFICE</b><small>EPISODE FILES</small></span>
+      <span><b>THE OFFICE</b><small>EPISODE GUIDE</small></span>
     </a>
     <nav aria-label="Page controls">
       <button class="header-button" id="favorites-toggle" type="button" aria-pressed="false">
@@ -32,7 +32,7 @@
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-copy">
         <p class="eyebrow">DUNDER MIFFLIN · SCRANTON BRANCH</p>
-        <h1 id="page-title">Every episode.<br><em>Filed properly.</em></h1>
+        <h1 id="page-title">Every episode.<br><em>Organized properly.</em></h1>
         <p class="hero-intro">All 201 episodes of <cite>The Office</cite>, from the first awkward meeting to the final documentary panel.</p>
         <div class="hero-stats" aria-label="Series statistics">
           <div><strong>201</strong><span>episodes</span></div>
@@ -51,7 +51,7 @@
           <p class="eyebrow">THE ARCHIVE</p>
           <h2 id="explorer-title">Find your next rewatch</h2>
         </div>
-        <p id="results-summary" role="status" aria-live="polite">Loading the files…</p>
+        <p id="results-summary" role="status" aria-live="polite">Loading the episodes…</p>
       </div>
 
       <div class="control-panel">
@@ -86,7 +86,7 @@
 
       <div class="joke-filters" aria-label="Filter by running joke">
         <span>Running jokes</span>
-        <button type="button" data-joke="all" class="active" aria-pressed="true">All files</button>
+        <button type="button" data-joke="all" class="active" aria-pressed="true">All episodes</button>
         <button type="button" data-joke="twss" aria-pressed="false">“That’s what she said”</button>
         <button type="button" data-joke="dundies" aria-pressed="false">Dundies</button>
         <button type="button" data-joke="pranks" aria-pressed="false">Pranks</button>
@@ -96,7 +96,7 @@
       <div id="episode-grid" class="episode-grid" tabindex="-1"></div>
       <div id="empty-state" class="empty-state" hidden>
         <span aria-hidden="true">📎</span>
-        <h3>No files match that search.</h3>
+        <h3>No episodes match that search.</h3>
         <p>Try another title, season, character, or joke.</p>
         <button type="button" id="clear-filters">Clear all filters</button>
       </div>
@@ -110,15 +110,15 @@
         <p>Indexed from episode transcripts and a curated record of the show’s most memorable visual pranks.</p>
       </div>
       <div class="ledger-cards">
-        <button type="button" data-ledger-joke="twss"><strong id="twss-total">—</strong><span>“That’s what she said” lines</span><small>Open those files →</small></button>
-        <button type="button" data-ledger-joke="dundies"><strong id="dundies-total">—</strong><span>Dundie references</span><small>Open those files →</small></button>
-        <button type="button" data-ledger-joke="pranks"><strong id="pranks-total">—</strong><span>Pranks indexed</span><small>Open those files →</small></button>
+        <button type="button" data-ledger-joke="twss"><strong id="twss-total">—</strong><span>“That’s what she said” lines</span><small>Open those episodes →</small></button>
+        <button type="button" data-ledger-joke="dundies"><strong id="dundies-total">—</strong><span>Dundie references</span><small>Open those episodes →</small></button>
+        <button type="button" data-ledger-joke="pranks"><strong id="pranks-total">—</strong><span>Pranks indexed</span><small>Open those episodes →</small></button>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span><b>THE OFFICE</b><small>EPISODE FILES</small></span></div>
+    <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span><b>THE OFFICE</b><small>EPISODE GUIDE</small></span></div>
     <p>A fan-made episode browser. Not affiliated with NBCUniversal, Peacock, IMDb, or TVMaze.</p>
     <p>Episode metadata and images via <a href="https://www.tvmaze.com/shows/526/the-office" target="_blank" rel="noreferrer">TVMaze</a>. Hero image: NBC/Getty Images via <a href="https://www.menshealth.com/entertainment/a32713300/steve-carell-net-worth/" target="_blank" rel="noreferrer">Men’s Health</a>. Ratings attributed to IMDb.</p>
   </footer>
