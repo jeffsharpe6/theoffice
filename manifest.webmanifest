@@ -1,6 +1,6 @@
 {
-  "name": "The Office — Episode Files",
-  "short_name": "Episode Files",
+  "name": "The Office — Episode Guide",
+  "short_name": "Episode Guide",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f4efe5",
