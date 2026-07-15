@@ -47,7 +47,6 @@ function renderCard(ep) {
   img.src = ep.image;
   img.alt = `Scene from “${ep.title}”`;
   img.addEventListener('error', () => { img.closest('.card-image-wrap').classList.add('image-missing'); img.remove(); }, {once:true});
-  card.querySelector('.episode-number').textContent = `EPISODE ${ep.absolute}`;
   card.querySelector('.episode-code').textContent = `S${String(ep.season).padStart(2,'0')} · E${String(ep.episode).padStart(2,'0')}`;
   card.querySelector('.rating span').textContent = ep.rating.toFixed(1);
   const title = card.querySelector('.episode-title');
