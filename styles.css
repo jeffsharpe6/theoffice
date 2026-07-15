@@ -61,7 +61,7 @@ h1 em { color: var(--green); font-weight: 700; }
 .hero-stats { display: flex; border-top: 1px solid var(--line); padding-top: 1.4rem; max-width: 560px; }
 .hero-stats div { min-width: 130px; display: grid; border-right: 1px solid var(--line); margin-right: 1.5rem; }
 .hero-stats div:last-child { border: 0; }.hero-stats strong { font-size: 1.7rem; }.hero-stats span { color: var(--muted); font: .67rem "DM Mono"; text-transform: uppercase; letter-spacing: .1em; margin-top: .25rem; }
-.hero-image { min-height: 500px; position: relative; background: linear-gradient(115deg, rgba(20,40,33,.14), rgba(20,40,33,.02)), url('https://static.tvmaze.com/uploads/images/original_untouched/49/123087.jpg') center 28%/cover no-repeat; filter: saturate(.72) contrast(.95); }
+.hero-image { min-height: 500px; position: relative; background: linear-gradient(115deg, rgba(20,40,33,.14), rgba(20,40,33,.02)), url('assets/michael-scott-desk.jpg') center 50%/cover no-repeat; filter: saturate(.82) contrast(.97); }
 .hero-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(19,34,29,.28), transparent 55%); }
 .hero-sticker { position: absolute; z-index: 2; bottom: 2.5rem; left: -2.2rem; background: var(--surface-strong); color: #26332e; border: 1px solid #dad6ce; padding: 1rem 1.4rem; transform: rotate(-2deg); box-shadow: 0 7px 22px rgba(0,0,0,.15); font: .61rem "DM Mono"; letter-spacing: .08em; line-height: 1.6; }
 .explorer { padding: clamp(4rem, 7vw, 7rem) clamp(1rem, 4vw, 4.5rem); max-width: 1700px; margin: auto; }
