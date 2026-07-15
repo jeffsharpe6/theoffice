@@ -4,7 +4,6 @@ import json
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
-from urllib.parse import quote_plus
 
 ROOT = Path(__file__).resolve().parents[1]
 TVMAZE = Path('/tmp/tvmaze-episodes.json')
@@ -119,7 +118,7 @@ for absolute, ep in enumerate(tvmaze, 1):
         'image': (ep.get('image') or {}).get('original') or (ep.get('image') or {}).get('medium'),
         'characters': transcript['characters'],
         'jokes': jokes,
-        'peacock': 'https://www.peacocktv.com/search?q=' + quote_plus(f"The Office {clean_title}"),
+        'peacock': 'https://www.peacocktv.com/watch/search',
     })
 
 assert len(episodes) == 201, len(episodes)
