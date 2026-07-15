@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4efe5">
+  <meta name="description" content="Browse all 201 episodes of The Office by season, rating, character, and running joke.">
+  <title>The Office — Episode Files</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://static.tvmaze.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#episode-grid">Skip to episodes</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Episode Files home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><b>THE OFFICE</b><small>EPISODE FILES</small></span>
+    </a>
+    <nav aria-label="Page controls">
+      <button class="header-button" id="favorites-toggle" type="button" aria-pressed="false">
+        <span aria-hidden="true">♥</span> Favorites <b id="favorite-count">0</b>
+      </button>
+      <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Toggle light or dark mode">
+        <span class="theme-icon" aria-hidden="true">◐</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">DUNDER MIFFLIN · SCRANTON BRANCH</p>
+        <h1 id="page-title">Every episode.<br><em>Filed properly.</em></h1>
+        <p class="hero-intro">All 201 episodes of <cite>The Office</cite>, from the first awkward meeting to the final documentary panel.</p>
+        <div class="hero-stats" aria-label="Series statistics">
+          <div><strong>201</strong><span>episodes</span></div>
+          <div><strong>9</strong><span>seasons</span></div>
+          <div><strong>8.3</strong><span>average IMDb</span></div>
+        </div>
+      </div>
+      <div class="hero-image" role="img" aria-label="The Office cast in the Dunder Mifflin office">
+        <div class="hero-sticker">PROPERTY OF<br><b>DUNDER MIFFLIN</b></div>
+      </div>
+    </section>
+
+    <section class="explorer" aria-labelledby="explorer-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE ARCHIVE</p>
+          <h2 id="explorer-title">Find your next rewatch</h2>
+        </div>
+        <p id="results-summary" role="status" aria-live="polite">Loading the files…</p>
+      </div>
+
+      <div class="control-panel">
+        <label class="search-box">
+          <span>Search</span>
+          <input id="search" type="search" placeholder="Try “Dinner Party” or “Michael”…" autocomplete="off">
+          <kbd>⌘ K</kbd>
+        </label>
+        <label>
+          <span>Season</span>
+          <select id="season-filter">
+            <option value="all">All seasons</option>
+          </select>
+        </label>
+        <label>
+          <span>Character</span>
+          <select id="character-filter">
+            <option value="all">All characters</option>
+          </select>
+        </label>
+        <label>
+          <span>Sort by</span>
+          <select id="sort-select">
+            <option value="episode-asc">Episode number</option>
+            <option value="rating-desc">IMDb rating: high to low</option>
+            <option value="rating-asc">IMDb rating: low to high</option>
+            <option value="date-asc">Air date: oldest first</option>
+            <option value="date-desc">Air date: newest first</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="joke-filters" aria-label="Filter by running joke">
+        <span>Running jokes</span>
+        <button type="button" data-joke="all" class="active" aria-pressed="true">All files</button>
+        <button type="button" data-joke="twss" aria-pressed="false">“That’s what she said”</button>
+        <button type="button" data-joke="dundies" aria-pressed="false">Dundies</button>
+        <button type="button" data-joke="pranks" aria-pressed="false">Pranks</button>
+      </div>
+
+      <div id="active-filters" class="active-filters" aria-label="Active filters"></div>
+      <div id="episode-grid" class="episode-grid" tabindex="-1"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        <span aria-hidden="true">📎</span>
+        <h3>No files match that search.</h3>
+        <p>Try another title, season, character, or joke.</p>
+        <button type="button" id="clear-filters">Clear all filters</button>
+      </div>
+      <button id="load-more" class="load-more" type="button" hidden>Load more episodes</button>
+    </section>
+
+    <section class="joke-ledger" aria-labelledby="ledger-title">
+      <div>
+        <p class="eyebrow">ACCOUNTING DEPARTMENT</p>
+        <h2 id="ledger-title">The running-joke ledger</h2>
+        <p>Indexed from episode transcripts and a curated record of the show’s most memorable visual pranks.</p>
+      </div>
+      <div class="ledger-cards">
+        <button type="button" data-ledger-joke="twss"><strong id="twss-total">—</strong><span>“That’s what she said” lines</span><small>Open those files →</small></button>
+        <button type="button" data-ledger-joke="dundies"><strong id="dundies-total">—</strong><span>Dundie references</span><small>Open those files →</small></button>
+        <button type="button" data-ledger-joke="pranks"><strong id="pranks-total">—</strong><span>Pranks indexed</span><small>Open those files →</small></button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span><b>THE OFFICE</b><small>EPISODE FILES</small></span></div>
+    <p>A fan-made episode browser. Not affiliated with NBCUniversal, Peacock, IMDb, or TVMaze.</p>
+    <p>Episode metadata and images via <a href="https://www.tvmaze.com/shows/526/the-office" target="_blank" rel="noreferrer">TVMaze</a>. Ratings attributed to IMDb.</p>
+  </footer>
+
+  <template id="episode-template">
+    <article class="episode-card">
+      <div class="card-image-wrap">
+        <img class="card-image" alt="" loading="lazy" decoding="async">
+        <span class="episode-number"></span>
+        <button class="favorite-button" type="button" aria-label="Add to favorites" aria-pressed="false" title="Save favorite">♥</button>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="episode-code"></span><span class="rating"><b>★</b> <span></span></span></div>
+        <h3><a class="episode-title" target="_blank" rel="noreferrer"></a></h3>
+        <p class="air-date"></p>
+        <p class="summary"></p>
+        <div class="characters" aria-label="Characters appearing"></div>
+        <div class="joke-badges"></div>
+        <a class="watch-link" target="_blank" rel="noreferrer">Search on Peacock <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
