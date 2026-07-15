@@ -47,13 +47,13 @@ function renderCard(ep) {
   img.src = ep.image;
   img.alt = `Scene from “${ep.title}”`;
   img.addEventListener('error', () => { img.closest('.card-image-wrap').classList.add('image-missing'); img.remove(); }, {once:true});
-  card.querySelector('.episode-number').textContent = `FILE ${String(ep.absolute).padStart(3,'0')}`;
+  card.querySelector('.episode-number').textContent = `EPISODE ${String(ep.absolute).padStart(3,'0')}`;
   card.querySelector('.episode-code').textContent = `S${String(ep.season).padStart(2,'0')} · E${String(ep.episode).padStart(2,'0')}`;
   card.querySelector('.rating span').textContent = ep.rating.toFixed(1);
   const title = card.querySelector('.episode-title');
   title.textContent = ep.title; title.href = ep.peacock; title.title = `Search Peacock for ${ep.title}`;
   card.querySelector('.air-date').textContent = dateFormat.format(new Date(`${ep.airDate}T12:00:00`));
-  card.querySelector('.summary').textContent = ep.summary || 'Episode summary is being refiled.';
+  card.querySelector('.summary').textContent = ep.summary || 'Episode summary is unavailable.';
   const characters = card.querySelector('.characters');
   ep.characters.slice(0, 5).forEach(name => characters.insertAdjacentHTML('beforeend', `<span>${escapeHtml(name)}</span>`));
   if (ep.characters.length > 5) characters.insertAdjacentHTML('beforeend', `<span>+${ep.characters.length - 5}</span>`);
@@ -74,7 +74,7 @@ function render() {
   const filtered = filteredEpisodes();
   const shown = filtered.slice(0, state.visible);
   els.grid.replaceChildren(...shown.map(renderCard));
-  els.summary.textContent = `${filtered.length} ${filtered.length === 1 ? 'file' : 'files'} found`;
+  els.summary.textContent = `${filtered.length} ${filtered.length === 1 ? 'episode' : 'episodes'} found`;
   els.empty.hidden = filtered.length > 0;
   els.loadMore.hidden = shown.length >= filtered.length;
   els.loadMore.textContent = `Load more (${filtered.length - shown.length} remaining)`;
@@ -147,7 +147,7 @@ async function init() {
   const theme = localStorage.getItem('office-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
   const response = await fetch('data/episodes.json');
-  if (!response.ok) throw new Error('Could not load episode files.');
+  if (!response.ok) throw new Error('Could not load episode data.');
   state.episodes = await response.json();
   for (let i=1; i<=9; i++) els.season.insertAdjacentHTML('beforeend', `<option value="${i}">Season ${i}</option>`);
   const characterCounts = new Map();
