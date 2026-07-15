@@ -9,7 +9,7 @@ A fast, responsive, static browser for all 201 episodes of the U.S. television s
 - Sort by canonical episode number, original air date, or IMDb rating
 - Save favorites in browser local storage
 - Light and dark themes
-- Episode searches on Peacock
+- Episode links to Peacock's current search page
 - Responsive, accessible cards for phones, tablets, and desktops
 
 ## Run locally
